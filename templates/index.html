@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html lang='ja'>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="モンテカルロしよう">
+  <meta name="twitter:description" content="プロット数を指定してπを推定する">
+  <meta name="twitter:image" content="{{ url_for("static", filename="twitter_card.png") }}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for("static", filename="style.css") }}"
+  <title>MonteCarlo</title>
+</head>
+<body>
+  <div>
+    <nav class="navbar fixed-top navbar-dark bg-success">
+      <a class="navbar-brand" href="/">モンテカルロしよう</a>
+    </nav>
+  </div>
+  <br>
+  <br>
+  <br>
+  <div class="container">
+    <div>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      <ul class=flashes style="list-style-type: none;">
+        {% for category, message in messages %}
+        <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% endwith %}
+    </div>
+
+    <div>
+      <h1>プロット数Nを指定してπを求めよう</h1>
+    </div>
+
+    <form action = "/" method = post enctype = multipart/form-data>
+      <div>
+  			<label for="r1">プロットの座標は小数でとる</label>
+  			<input type="radio" id="r1" name="radio" value="decimal" checked>
+		  </div>
+	    <div>
+  			<label for="r2">プロットは格子点がいい</label>
+  			<input type="radio" id="r2" name="radio" value="integer">
+	    </div>
+        <input class="form-control" placeholder="プロットの数(1-10000)" type="text" name="MonteCarlo_N">
+      <br><button type="submit" class="btn btn-success">πを占う</button>
+    </form>
+  </div>
+
+  <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
